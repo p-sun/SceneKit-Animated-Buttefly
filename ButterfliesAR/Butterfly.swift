@@ -69,7 +69,7 @@ class Butterfly {
         }
         
         private mutating func addGlideAction() {
-            let glideDuration = TimeInterval.random(min: 1.8, max: 2.8)
+            let glideDuration = TimeInterval.random(min: 2.0, max: 3.6)
             
             let wingRotation = CGFloat(Int.random(min: -15, max: -10))
             let rightWingAction = SCNAction.rotateBy(x: -wingRotation.degreesToRadians, y: 0, z: 0, duration: glideDuration)
@@ -139,39 +139,3 @@ extension BinaryFloatingPoint {
         return Self.random * (max - min) + min
     }
 }
-//
-//extension BinaryFloatingPoint {
-//
-//    // Random float between min and max, non-inclusive?
-//    static func random(min: Self, max: Self) -> Int {
-//        assert(min <= max)
-//
-//        let diff = max - min
-//        arc4random_uniform(diff)
-//    }
-//
-////
-////    private func toInt() -> Int {
-////        // https://stackoverflow.com/q/49325962/4488252
-////        if let value = self as? CGFloat {
-////            return Int(value)
-////        }
-////        return Int(self)
-////    }
-////
-////    static func rand(_ min: Self, _ max: Self, precision: Int) -> Self {
-////
-////        if precision == 0 {
-////            let min = min.rounded(.down).toInt()
-////            let max = max.rounded(.down).toInt()
-////            return Self(Int.rand(min, max))
-////        }
-////
-////        let delta = max - min
-////        let maxFloatPart = Self(pow(10.0, Double(precision)))
-////        let maxIntegerPart = (delta * maxFloatPart).rounded(.down).toInt()
-////        let randomValue = Int.rand(0, maxIntegerPart)
-////        let result = min + Self(randomValue)/maxFloatPart
-////        return Self((result*maxFloatPart).toInt())/maxFloatPart
-////    }
-//}
