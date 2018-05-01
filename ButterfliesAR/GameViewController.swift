@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
         scene.rootNode.addChildNode(cameraNode)
         
         // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 4)
+        cameraNode.position = SCNVector3(x: 0, y: 0.8, z: 3)
         
         // create and add a light to the scene
         let lightNode = SCNNode()
@@ -43,14 +43,14 @@ class GameViewController: UIViewController {
         // retrieve the butterfly node
         let butterfly = Butterfly()
         let butterflyNode = butterfly.butterflyNode
-        scene.rootNode.addChildNode(butterflyNode)
         butterfly.playAnimation()
         
+        let butterflyParent = SCNNode()
+        butterflyParent.addChildNode(butterflyNode)
+        scene.rootNode.addChildNode(butterflyParent)
 
-        
-        
         // animate the 3d object
-//        butterflyNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 5)))
+        butterflyParent.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 5)))
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
@@ -65,7 +65,7 @@ class GameViewController: UIViewController {
         scnView.showsStatistics = true
         
         // configure the view
-        scnView.backgroundColor = UIColor.black
+        scnView.backgroundColor = #colorLiteral(red: 0.1166557153, green: 0, blue: 0.2508298251, alpha: 1)
         
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
